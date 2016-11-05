@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:layout_marginLeft="15dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="要不要" />
+
+    <TextView
+        android:id="@+id/item_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#ff999999"
+        android:textSize="14sp"
+        tools:text="要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要要不要" />
+
+    <TextView
+        android:id="@+id/item_tv_ct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
+        android:textColor="#ff999999"
+        android:textSize="12sp"
+        tools:text="2016-05-30 16:30:27.239" />
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff0f0f2"
+    android:orientation="vertical"
+    tools:context="com.xiezhenqi.business.home.fragments.DFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/account_rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+
+            <ImageView
+                android:id="@+id/account_siv_head"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_loading_empty"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/account_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/account_siv_head"
+                android:layout_toRightOf="@+id/account_siv_head"
+                android:text="不是九天"
+                android:textColor="#ff333333"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
