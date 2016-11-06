@@ -11,14 +11,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".business.main.MainActivity">
+        <activity
+            android:name=".business.picdetails.WelcomeActivity"
+            android:theme="@style/WelcomeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.picdetails.PicDetailActivity"></activity>
+        <activity android:name=".business.main.MainActivity" />
+        <activity android:name=".business.picdetails.PicDetailActivity" />
+
     </application>
 
 </manifest>

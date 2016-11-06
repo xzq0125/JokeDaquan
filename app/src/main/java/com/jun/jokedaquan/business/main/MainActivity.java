@@ -1,5 +1,7 @@
 package com.jun.jokedaquan.business.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -53,4 +55,9 @@ public class MainActivity extends BaseActivity {
             canFinish = false;
         }
     };
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
+    }
 }
