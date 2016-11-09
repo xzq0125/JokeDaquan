@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     android:fitsSystemWindows="true"
     tools:context=".business.picdetails.PicDetailActivity">
 
@@ -17,7 +17,7 @@
             android:id="@+id/detail_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_toolbar_normal">
+            android:background="@color/black">
 
             <TextView
                 android:id="@+id/detail_title"
@@ -55,9 +55,21 @@
             android:background="@drawable/bg_pic_detail_size"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="01/20"
-            android:textColor="@color/themeColor"
-            android:textSize="12sp" />
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="01/20" />
+
+        <TextView
+            android:id="@+id/detail_tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#99333333"
+            android:lineSpacingExtra="5dp"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            tools:text="更换粉红哥的风格的风格的风格的风格克劳福德挂号费读后感更换粉红哥的风格的风格的风格的风格克劳福德挂号费读后感更换粉红哥的风格的风格的风格的风格克劳福德挂号费读后感" />
 
     </RelativeLayout>
 

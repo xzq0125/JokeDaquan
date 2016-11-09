@@ -2,9 +2,11 @@ package com.jun.jokedaquan.business.picdetails;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.jun.jokedaquan.business.picdetails.adapters.PhotosAdapter;
 import com.jun.jokedaquan.business.picdetails.viewholders.PhotosViewHolder;
 import com.jun.jokedaquan.entity.gif.GifDto;
 import com.jun.jokedaquan.utils.AnimatorUtils;
+import com.jun.jokedaquan.utils.StatusBarUtils;
 
 import java.util.ArrayList;
 
@@ -30,6 +33,8 @@ public class PicDetailActivity extends BroadcastActivity implements ViewPager.On
     TextView tvTitle;
     @Bind(R.id.detail_tv_size)
     TextView tvSize;
+    @Bind(R.id.detail_tv_content)
+    TextView tvContent;
 
     private static final String EXTRA_LIST = "list";
     private static final String EXTRA_CURR_ITEM = "curr_item";
@@ -49,6 +54,10 @@ public class PicDetailActivity extends BroadcastActivity implements ViewPager.On
         if (list == null || list.isEmpty())
             finish();
         size = list.size();
+        if (Build.VERSION.SDK_INT >= 21) {
+            StatusBarUtils.setLayoutFullscreen(this);
+            StatusBarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.black));
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -65,14 +74,16 @@ public class PicDetailActivity extends BroadcastActivity implements ViewPager.On
         setSupportActionBar(R.id.detail_toolbar);
         PhotosAdapter photosAdapter = new PhotosAdapter(this);
         vpPics.setAdapter(photosAdapter);
+        vpPics.setPageMargin(100);
         photosAdapter.setData(list);
         int currPos = getCurrentPosition(list, currItem);
         vpPics.setCurrentItem(currPos);
         vpPics.addOnPageChangeListener(this);
-        tvTitle.setText(currItem.title);
+        tvTitle.setText(null);
+        tvContent.setText(currItem.title);
         tvSize.setText(getSizeString(currPos));
         browsePos = currPos;
-        AnimatorUtils.alpha(tvSize);
+        AnimatorUtils.alpha(tvSize, 0, 1, 1000);
     }
 
     private String getSizeString(int currPos) {
@@ -104,7 +115,7 @@ public class PicDetailActivity extends BroadcastActivity implements ViewPager.On
     public void onPageSelected(int position) {
         browsePos = position;
         if (position >= 0 && position < list.size()) {
-            tvTitle.setText(list.get(position).title);
+            tvContent.setText(list.get(position).title);
             tvSize.setText(getSizeString(position));
         }
     }
