@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff0f0f2"
     android:orientation="vertical"
-    tools:context="com.xiezhenqi.business.home.fragments.DFragment">
+    tools:context=".business.main.fragments.DFragment">
 
     <FrameLayout
         android:layout_width="match_parent"

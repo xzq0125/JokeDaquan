@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Parcelable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.action.BroadcastAction;
 import com.jun.jokedaquan.base.list.adapter.BaseLoadMoreAdapter;
 import com.jun.jokedaquan.base.list.fragment.BaseListFragment;
@@ -19,6 +21,7 @@ import com.jun.jokedaquan.request.RequestFactory;
 import com.jun.jokedaquan.request.RequestTask;
 import com.jun.jokedaquan.utils.RecyclerViewUtils;
 import com.jun.jokedaquan.utils.ToastUtils;
+import com.jun.jokedaquan.widget.divider.DividerItemDecoration;
 import com.jun.jokedaquan.widget.stateframelayout.StateFrameLayout;
 
 import java.lang.ref.WeakReference;
@@ -54,6 +57,7 @@ public class BFragment extends BaseListFragment implements
         this.recyclerView = recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(me.getContext()));
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(me.getContext(), R.drawable.divider_sister_list)));
         mAdapter.addOnItemClickListener(me);
     }
 

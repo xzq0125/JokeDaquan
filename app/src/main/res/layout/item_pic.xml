@@ -27,7 +27,8 @@
         <ImageView
             android:id="@+id/item_iv"
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
             tools:ignore="ContentDescription" />
 
         <ImageView

@@ -84,9 +84,6 @@ public class GifViewHolder extends BaseLoadMoreViewHolder implements View.OnClic
                 ivPlayGif.setVisibility(View.GONE);
                 Glide.with(ivGif.getContext())
                         .load(data.img)
-                        .asGif()
-                        .crossFade()
-                        .fitCenter()
                         .into(ivGif);
                 break;
 

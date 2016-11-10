@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.jun.jokedaquan.entity.ResponseDtoEntity;
 import com.jun.jokedaquan.entity.gif.GifDto;
 import com.jun.jokedaquan.entity.gif.TextDto;
+import com.jun.jokedaquan.entity.sister.SisterDto;
 
 /**
  * 请求工厂
@@ -15,6 +16,7 @@ public class RequestFactory {
     public static final String ADDRESS_GET_GIF = "/341-3";//动图地址
     public static final String ADDRESS_GET_PIC = "/341-2";//图片地址
     public static final String ADDRESS_GET_TEXT = "/341-1";//文本地址
+    public static final String ADDRESS_GET_SISTER = "/255-1";//百思不得姐地址
 
 
     /**
@@ -63,6 +65,21 @@ public class RequestFactory {
         urlMaker.addUrlData("maxResult", maxResult);
         urlMaker.addUrlData("page", page);
         return new RequestHelper(urlMaker, new TypeToken<ResponseDtoEntity<TextDto>>() {
+        });
+    }
+
+    /**
+     * 获取百思不得姐
+     *
+     * @param type 类别
+     * @param page 第几页
+     * @return 请求
+     */
+    public static RequestHelper getJokeFromSister(int type, int page) {
+        RequestUrlBuilder urlMaker = new RequestUrlBuilder(ADDRESS_GET_SISTER);
+        urlMaker.addUrlData("type", type);
+        urlMaker.addUrlData("page", page);
+        return new RequestHelper(urlMaker, new TypeToken<ResponseDtoEntity<SisterDto>>() {
         });
     }
 

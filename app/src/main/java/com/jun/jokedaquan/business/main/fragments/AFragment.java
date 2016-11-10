@@ -1,9 +1,11 @@
 package com.jun.jokedaquan.business.main.fragments;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.base.list.adapter.BaseLoadMoreAdapter;
 import com.jun.jokedaquan.base.list.fragment.BaseListFragment;
 import com.jun.jokedaquan.business.gif.adapters.GifAdapter;
@@ -12,6 +14,7 @@ import com.jun.jokedaquan.request.RequestError;
 import com.jun.jokedaquan.request.RequestFactory;
 import com.jun.jokedaquan.request.RequestTask;
 import com.jun.jokedaquan.utils.ToastUtils;
+import com.jun.jokedaquan.widget.divider.DividerItemDecoration;
 import com.jun.jokedaquan.widget.stateframelayout.StateFrameLayout;
 
 import java.lang.ref.WeakReference;
@@ -39,6 +42,7 @@ public class AFragment extends BaseListFragment implements RequestTask.OnTaskLis
     protected void initRecyclerView(RecyclerView recyclerView, ViewGroup container) {
         recyclerView.setLayoutManager(new LinearLayoutManager(me.getContext()));
         recyclerView.setAdapter(mAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(me.getContext(), R.drawable.divider_sister_list)));
     }
 
     @Override
@@ -69,7 +73,7 @@ public class AFragment extends BaseListFragment implements RequestTask.OnTaskLis
 
         if (dto != null && dto instanceof GifDto) {
             GifDto gifDto = (GifDto) dto;
-            if (gifDto.contentlist == null ) {
+            if (gifDto.contentlist == null) {
                 showEmpty();
                 return;
             }
