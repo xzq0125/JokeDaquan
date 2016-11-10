@@ -67,7 +67,6 @@ public class GifViewHolder extends BaseLoadMoreViewHolder implements View.OnClic
             ct = s[0];
         }
         tvCt.setText("－" + ct);
-        tvCt.setText(ct);
     }
 
     @Override

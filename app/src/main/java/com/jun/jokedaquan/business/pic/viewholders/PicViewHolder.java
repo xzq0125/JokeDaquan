@@ -52,6 +52,5 @@ public class PicViewHolder extends BaseLoadMoreViewHolder {
             ct = s[0];
         }
         tvCt.setText("－" + ct);
-        tvCt.setText(ct);
     }
 }

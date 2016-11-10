@@ -63,11 +63,11 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             default:
             case 0:
-                return PagerType.A;
-            case 1:
                 return PagerType.B;
-            case 2:
+            case 1:
                 return PagerType.C;
+            case 2:
+                return PagerType.A;
             case 3:
                 return PagerType.D;
             case 4:
@@ -132,21 +132,21 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
+        switch (positionToType(position)) {
             default:
-            case 0:
+            case A:
                 return AFragment.getPageTitle();
-            case 1:
+            case B:
                 return BFragment.getPageTitle();
-            case 2:
+            case C:
                 return CFragment.getPageTitle();
-            case 3:
+            case D:
                 return DFragment.getPageTitle();
-            case 4:
+            case E:
                 return EFragment.getPageTitle();
-            case 5:
+            case F:
                 return FFragment.getPageTitle();
-            case 6:
+            case G:
                 return GFragment.getPageTitle();
         }
     }
