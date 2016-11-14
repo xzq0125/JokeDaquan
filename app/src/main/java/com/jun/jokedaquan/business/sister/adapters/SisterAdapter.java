@@ -14,13 +14,16 @@ import com.jun.jokedaquan.entity.sister.SisterDto;
 
 public class SisterAdapter extends BaseLoadMoreAdapter<SisterDto.SisterContentDto, SisterViewHolder> {
 
-    public SisterAdapter(OnLoadMoreCallback loadMoreCallback) {
+    private SisterViewHolder.OnHolderClickListener listener;
+
+    public SisterAdapter(OnLoadMoreCallback loadMoreCallback, SisterViewHolder.OnHolderClickListener listener) {
         super(loadMoreCallback);
+        this.listener = listener;
     }
 
     @Override
     public SisterViewHolder onCreateNormalViewHolder(View itemView) {
-        return new SisterViewHolder(itemView);
+        return new SisterViewHolder(itemView, listener);
     }
 
     @Override

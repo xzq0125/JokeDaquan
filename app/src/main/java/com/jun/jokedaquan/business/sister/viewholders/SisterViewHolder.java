@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.base.list.viewholder.BaseLoadMoreViewHolder;
+import com.jun.jokedaquan.business.main.fragments.SisterType;
 import com.jun.jokedaquan.entity.sister.SisterDto;
 
 import butterknife.Bind;
@@ -55,10 +56,12 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
     TextView tvComment;
 
     private Context context;
+    private OnHolderClickListener listener;
 
-    public SisterViewHolder(View itemView) {
+    public SisterViewHolder(View itemView, OnHolderClickListener listener) {
         super(itemView);
         this.context = itemView.getContext();
+        this.listener = listener;
         ButterKnife.bind(this, itemView);
     }
 
@@ -89,6 +92,22 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
 
 //        tvObserver.setText(data.name + "：");
 //        tvComment.setText(text);
+
+        switch (Integer.parseInt(data.type)) {
+            case SisterType.TYPE_DUANZI:
+                break;
+            case SisterType.TYPE_PIC:
+                break;
+            case SisterType.TYPE_VOICE:
+                break;
+            case SisterType.TYPE_VIDEO:
+                if (listener != null)
+                    listener.onPlayVideoClick(data);
+                break;
+            default:
+                break;
+        }
+
     }
 
     private void loadImg(String url, ImageView imageView) {
@@ -98,6 +117,10 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
             Glide.with(context).load(url).into(imageView);
         else
             Glide.with(context).load(url).centerCrop().into(imageView);
+    }
+
+    public interface OnHolderClickListener {
+        void onPlayVideoClick(SisterDto.SisterContentDto dto);
     }
 
 }

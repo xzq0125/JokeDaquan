@@ -1,5 +1,7 @@
 package com.jun.jokedaquan.business.main.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +11,7 @@ import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.base.list.adapter.BaseLoadMoreAdapter;
 import com.jun.jokedaquan.base.list.fragment.BaseListFragment;
 import com.jun.jokedaquan.business.sister.adapters.SisterAdapter;
+import com.jun.jokedaquan.business.sister.viewholders.SisterViewHolder;
 import com.jun.jokedaquan.entity.sister.SisterDto;
 import com.jun.jokedaquan.request.RequestError;
 import com.jun.jokedaquan.request.RequestFactory;
@@ -26,12 +29,12 @@ import java.util.List;
  * Created by Tse on 2016/10/29.
  */
 
-public class GFragment extends BaseListFragment implements BaseLoadMoreAdapter.OnLoadMoreCallback, RequestTask.OnTaskListener {
+public class GFragment extends BaseListFragment implements BaseLoadMoreAdapter.OnLoadMoreCallback, RequestTask.OnTaskListener, SisterViewHolder.OnHolderClickListener {
 
     private GFragment me = this;
     private int mPage = 1;
     private WeakReference<StateFrameLayout> mLoadMoreView;
-    private SisterAdapter mAdapter = new SisterAdapter(me);
+    private SisterAdapter mAdapter = new SisterAdapter(me, me);
 
     public static CharSequence getPageTitle() {
         return "百思不得姐-视频";
@@ -104,5 +107,21 @@ public class GFragment extends BaseListFragment implements BaseLoadMoreAdapter.O
             }
             mPage++;
         }
+    }
+
+    @Override
+    public void onPlayVideoClick(SisterDto.SisterContentDto dto) {
+        //    0.    定义好视频的路径
+        Uri uri = Uri.parse(dto.video_uri);
+
+        //  1.  先设定好Intent
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+
+        //  2.  设置好 Data：播放源，是一个URI
+        //      设置好 Data的Type：类型是 “video/mp4"
+        intent.setDataAndType(uri, "video/*");
+
+        //  3.  跳转：
+        startActivity(intent);
     }
 }

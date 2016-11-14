@@ -9,6 +9,7 @@ import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.base.list.adapter.BaseLoadMoreAdapter;
 import com.jun.jokedaquan.base.list.fragment.BaseListFragment;
 import com.jun.jokedaquan.business.sister.adapters.SisterAdapter;
+import com.jun.jokedaquan.business.sister.viewholders.SisterViewHolder;
 import com.jun.jokedaquan.entity.sister.SisterDto;
 import com.jun.jokedaquan.request.RequestError;
 import com.jun.jokedaquan.request.RequestFactory;
@@ -26,12 +27,12 @@ import java.util.List;
  * Created by Tse on 2016/10/29.
  */
 
-public class FFragment extends BaseListFragment implements BaseLoadMoreAdapter.OnLoadMoreCallback, RequestTask.OnTaskListener {
+public class FFragment extends BaseListFragment implements BaseLoadMoreAdapter.OnLoadMoreCallback, RequestTask.OnTaskListener, SisterViewHolder.OnHolderClickListener {
 
     private FFragment me = this;
     private int mPage = 1;
     private WeakReference<StateFrameLayout> mLoadMoreView;
-    private SisterAdapter mAdapter = new SisterAdapter(me);
+    private SisterAdapter mAdapter = new SisterAdapter(me, me);
 
     public static CharSequence getPageTitle() {
         return "百思不得姐-声音";
@@ -104,5 +105,10 @@ public class FFragment extends BaseListFragment implements BaseLoadMoreAdapter.O
             }
             mPage++;
         }
+    }
+
+    @Override
+    public void onPlayVideoClick(SisterDto.SisterContentDto dto) {
+
     }
 }
