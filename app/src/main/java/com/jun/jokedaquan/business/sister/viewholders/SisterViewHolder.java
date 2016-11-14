@@ -87,8 +87,8 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
         tvShare.setText(data.love);
         tvMsg.setText(data.hate);
 
-        tvObserver.setText(data.name + "：");
-        tvComment.setText(text);
+//        tvObserver.setText(data.name + "：");
+//        tvComment.setText(text);
     }
 
     private void loadImg(String url, ImageView imageView) {

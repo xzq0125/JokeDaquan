@@ -34,7 +34,7 @@ public class DFragment extends BaseListFragment implements BaseLoadMoreAdapter.O
     private SisterAdapter mAdapter = new SisterAdapter(me);
 
     public static CharSequence getPageTitle() {
-        return "百思不得姐";
+        return "百思不得姐-图片";
     }
 
     @Override
@@ -47,7 +47,7 @@ public class DFragment extends BaseListFragment implements BaseLoadMoreAdapter.O
     @Override
     protected void loadData(boolean loadFirstPage) {
         mPage = loadFirstPage ? 1 : mPage;
-        new RequestTask(me).execute(RequestFactory.getJokeFromSister(10, mPage));
+        new RequestTask(me).execute(RequestFactory.getJokeFromSister(SisterType.TYPE_PIC, mPage));
     }
 
     @Override
