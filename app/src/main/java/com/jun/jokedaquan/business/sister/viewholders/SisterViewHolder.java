@@ -14,6 +14,7 @@ import com.jun.jokedaquan.entity.sister.SisterDto;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * SisterViewHolder
@@ -57,6 +58,7 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
 
     private Context context;
     private OnHolderClickListener listener;
+    private SisterDto.SisterContentDto data;
 
     public SisterViewHolder(View itemView, OnHolderClickListener listener) {
         super(itemView);
@@ -66,6 +68,9 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
     }
 
     public void setData(SisterDto.SisterContentDto data) {
+        if (data == null)
+            return;
+        this.data = data;
         String text = data.text;
         if (text != null) {
             text = text.replaceAll("\\n", "").trim();
@@ -85,6 +90,10 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
             loadImg(data.image3, ivImg3);
         }
 
+        if (TextUtils.equals(data.type, "41")) {
+            Glide.with(context).load(R.drawable.ic_welcome).into(ivImg0);
+        }
+
         tvLove.setText(data.love);
         tvHate.setText(data.hate);
         tvShare.setText(data.love);
@@ -92,6 +101,20 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
 
 //        tvObserver.setText(data.name + "：");
 //        tvComment.setText(text);
+
+    }
+
+    private void loadImg(String url, ImageView imageView) {
+        if (url == null)
+            return;
+        if (url.endsWith(".gif"))
+            Glide.with(context).load(url).into(imageView);
+        else
+            Glide.with(context).load(url).centerCrop().into(imageView);
+    }
+
+    @OnClick(R.id.item_sister_img0)
+    public void onClick(View view) {
 
         switch (Integer.parseInt(data.type)) {
             case SisterType.TYPE_DUANZI:
@@ -107,16 +130,6 @@ public class SisterViewHolder extends BaseLoadMoreViewHolder {
             default:
                 break;
         }
-
-    }
-
-    private void loadImg(String url, ImageView imageView) {
-        if (url == null)
-            return;
-        if (url.endsWith(".gif"))
-            Glide.with(context).load(url).into(imageView);
-        else
-            Glide.with(context).load(url).centerCrop().into(imageView);
     }
 
     public interface OnHolderClickListener {

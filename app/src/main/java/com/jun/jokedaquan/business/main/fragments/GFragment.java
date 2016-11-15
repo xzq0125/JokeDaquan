@@ -1,7 +1,5 @@
 package com.jun.jokedaquan.business.main.fragments;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +8,7 @@ import android.view.ViewGroup;
 import com.jun.jokedaquan.R;
 import com.jun.jokedaquan.base.list.adapter.BaseLoadMoreAdapter;
 import com.jun.jokedaquan.base.list.fragment.BaseListFragment;
+import com.jun.jokedaquan.business.play.PlayActivity;
 import com.jun.jokedaquan.business.sister.adapters.SisterAdapter;
 import com.jun.jokedaquan.business.sister.viewholders.SisterViewHolder;
 import com.jun.jokedaquan.entity.sister.SisterDto;
@@ -111,17 +110,19 @@ public class GFragment extends BaseListFragment implements BaseLoadMoreAdapter.O
 
     @Override
     public void onPlayVideoClick(SisterDto.SisterContentDto dto) {
-        //    0.    定义好视频的路径
-        Uri uri = Uri.parse(dto.video_uri);
+//        //    0.    定义好视频的路径
+//        Uri uri = Uri.parse(dto.video_uri);
+//
+//        //  1.  先设定好Intent
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//
+//        //  2.  设置好 Data：播放源，是一个URI
+//        //      设置好 Data的Type：类型是 “video/mp4"
+//        intent.setDataAndType(uri, "video/*");
+//
+//        //  3.  跳转：
+//        startActivity(intent);
 
-        //  1.  先设定好Intent
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-
-        //  2.  设置好 Data：播放源，是一个URI
-        //      设置好 Data的Type：类型是 “video/mp4"
-        intent.setDataAndType(uri, "video/*");
-
-        //  3.  跳转：
-        startActivity(intent);
+        PlayActivity.start(getActivity(), dto.video_uri);
     }
 }
