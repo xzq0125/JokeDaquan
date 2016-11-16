@@ -53,6 +53,7 @@ public class PlayActivity extends BaseActivity implements OnPreparedListener, Vi
         emVideoView = (EMVideoView) findViewById(R.id.video_view);
         emVideoView.setOnPreparedListener(this);
         MyVideoControls controls = new MyVideoControls(this);
+       // controls.setTitle("标题");
         emVideoView.setControls(controls);
         controls.addViewOnClickListener(this);
 
