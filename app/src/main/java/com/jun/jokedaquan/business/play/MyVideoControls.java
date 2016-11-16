@@ -16,7 +16,6 @@ import com.devbrackets.android.exomedia.ui.animation.TopViewHideShowAnimation;
 import com.devbrackets.android.exomedia.ui.widget.VideoControls;
 import com.devbrackets.android.exomedia.util.TimeFormatUtil;
 import com.jun.jokedaquan.R;
-import com.jun.jokedaquan.utils.ToastUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -91,12 +90,10 @@ public class MyVideoControls extends VideoControls {
     protected void registerListeners() {
         super.registerListeners();
         seekBar.setOnSeekBarChangeListener(new SeekBarChanged());
-        ibtnFull.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showToast(getContext(), "全屏");
-            }
-        });
+    }
+
+    public void addViewOnClickListener(View.OnClickListener listener) {
+        ibtnFull.setOnClickListener(listener);
     }
 
     @Override
