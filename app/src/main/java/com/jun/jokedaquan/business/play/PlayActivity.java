@@ -30,7 +30,7 @@ public class PlayActivity extends BaseActivity implements OnPreparedListener {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         if (Build.VERSION.SDK_INT >= 21) {
             StatusBarUtils.setLayoutFullscreen(this);
-            StatusBarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.black));
+            StatusBarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.transparent));
         }
         super.onCreate(savedInstanceState);
     }
@@ -41,6 +41,7 @@ public class PlayActivity extends BaseActivity implements OnPreparedListener {
         String url = getIntent().getStringExtra(EXTRA_URL);
         emVideoView = (EMVideoView) findViewById(R.id.video_view);
         emVideoView.setOnPreparedListener(this);
+        emVideoView.setControls(new MyVideoControls(this));
 
         //For now we just picked an arbitrary item to play.  More can be found at
         //https://archive.org/details/more_animation
